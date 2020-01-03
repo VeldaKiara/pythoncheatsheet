@@ -273,11 +273,207 @@ print(sorted(names))
 #NB Data structures are containers that include different dat types. A list is a data structure. All data structures are data types.
 #NB list are ordered and mutable
 
+#Tuples
+#Tuples is another  container.
+#It's a data type for immutable ordered sequences of elements. 
+#They are often used to store related pieces of information.
+#A good example is shown below.
 
+location = (13.4125, 103.866667)
+print("Latitude:", location[0])
+print("Longitude:", location[1])
 
+#Tuples are similar to lists in that they store an ordered collection of objects which can be accessed by their indices.
+#Unlike lists, however, tuples are immutable - you can't add and remove items from tuples, or sort them in place.
+#Tuples can also be used to assign multiple variables in a compact way.
+# A tuple is an immutable, ordered data structure that can be indexed and sliced like a list. 
+# Tuples are defined by listing a sequence of elements separated by commas, optionally contained within parentheses: 
+#Example
 
+dimensions = 52, 40, 100
+length, width, height = dimensions
+print("The dimensions are {} x {} x {}".format(length, width, height))
 
+#Tuple unpacking is used to assign the information from a tuple into multiple variables without having to access them one by one and make multiple assignment statements.
+#In our case if we will not use deimansions directly we can shorten it like this.
 
+length, width, height = 52, 40, 100
+print("The dimensions are {} x {} x {}".format(length, width, height))
+
+#NB Parentheses are optional when making tuples, and programmers frequently omit them if parentheses don't clarify the code.
+
+#sets
+#A set is a data type for mutable unordered collections of unique elements. 
+#One application of a set is to quickly remove duplicates from a list.
+
+numbers = [1, 2, 6, 3, 1, 1, 6]
+unique_nums = set(numbers)
+print(unique_nums)
+
+#Lists have square brackets, tuples have brackets and sets have curly brackets.
+#Sets support the in operator the same as lists do. 
+#You can add elements to sets using the add method, and remove elements using the pop method, similar to lists.
+#Although, when you pop an element from a set, a random element is removed.
+#Remember that sets, unlike lists, are unordered so there is no "last element".
+#A set is a mutable data structure - you can modify the elements in a set with methods like add and pop. A set is an unordered data structure, so you can't index and slice elements like a list; there is no sequence of positions to index with!
+
+#ne of the key properties of a set is that it only contains unique elements. 
+#So even if you create a new set with a list of elements that contains duplicates, Python will remove the duplicates when creating the set automatically.
+#An example is shown below.
+
+fruit = {"apple", "banana", "orange", "grapefruit"}  # define a set
+
+print("watermelon" in fruit)  # check for element
+
+fruit.add("watermelon")  # add an element
+print(fruit)
+
+print(fruit.pop())  # remove a random element
+print(fruit)
+
+#Other operations you can perform with sets include those of mathematical sets. 
+#Methods like union, intersection, and difference are easy to perform with sets, and are much faster than such operators with other containers.
+
+#Dictionaries.
+#A dictionary is a mutable data type that stores mappings of unique keys to values. They use curly brackets but when adding items use square brackets.
+#Dictionaries can have keys of any immutable type, like integers or tuples, not just strings. 
+#It's not necessary for every key to have the same type! We can look up values or insert new values in the dictionary using square brackets that enclose the key.
+#We can check whether a value is in a dictionary the same way we check whether a value is in a list or set with the in keyword. 
+#Dicts have a related method that's also useful, get. 
+#get looks up values in a dictionary, but unlike square brackets, get returns None (or a default value of your choice) if the key isn't found.
+#Which of the following statements about dictionaries are true? 
+#A dictionary is a mutable data structure.Can be indexed using keys. its keys are unique.
+#Here's a dictionary that stores elements and their atomic numbers.
+
+elements = {"hydrogen": 1, "helium": 2, "carbon": 6}
+print(elements["helium"])  # print the value mapped to "helium"
+elements["lithium"] = 3  # insert "lithium" with a value of 3 into the dictionary.
+
+print("carbon" in elements)
+print(elements.get("dilithium"))
+
+#Carbon is in the dictionary, so True is printed. D
+#ilithium isn’t in our dictionary so None is returned by get and then printed. 
+#If you expect lookups to sometimes fail, get might be a better tool than normal square bracket lookups because errors can crash your program.
+
+#identity operators.
+#is	evaluates if both sides have the same identity.
+#is not	evaluates if both sides have different identities.
+
+#Example
+
+n = elements.get("dilithium")
+print(n is None)
+print(n is not None)
+
+#What happens if we look up a value that isn't in the dictionary? 
+#Create a test dictionary and use the square brackets to look up a value that you haven't defined. What happens? A key erros occurs.
+#Checking for equality == vs identity is.
+
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a == b)
+print(a is b)
+print(a == c)
+print(a is c)
+ 
+#a and b are identical and equal but a and c are equal  ut not identical.  output True, true,true and false.
+
+#Quick question
+# invalid dictionary - this should break
+#room_numbers = {
+    #['Freddie', 'Jen']: 403,
+    #['Ned', 'Keith']: 391,
+    #['Kristin', 'Jazzmyne']: 411,
+    #['Eugene', 'Zach']: 395
+#}
+#The question above generates a hashcode error.
+#TypeError: unhashable type: 'list'. In Python, any immutable object (such as an integer, boolean, string, tuple) is hashable,
+# meaning its value does not change during its lifetime. 
+# This allows Python to create a unique hash value to identify it, which can be used by dictionaries to track unique keys and sets to track unique values. 
+# This is why Python requires us to use immutable datatypes for the keys in a dictionary.
+#The lists used in the code above are NOT immutable, and thus cannot be hashed and used as dictionary keys.
+
+#Compound Data Structures.
+#We can include containers in other containers to create compound data structures.
+#An example.
+
+elements = {"hydrogen": {"number": 1,
+                         "weight": 1.00794,
+                         "symbol": "H"},
+              "helium": {"number": 2,
+                         "weight": 4.002602,
+                         "symbol": "He"}}
+
+helium = elements["helium"]  # get the helium dictionary
+hydrogen_weight = elements["hydrogen"]["weight"]  # get hydrogen's weight
+
+oxygen = {"number":8,"weight":15.999,"symbol":"O"}  # create a new oxygen dictionary 
+elements["oxygen"] = oxygen  # assign 'oxygen' as a key to the elements dictionary
+print('elements = ', elements)
+
+#Collections
+#When we have a group of data we can think about it as a collection (of data elements). 
+#In this lesson, we have seen many different data structures that Python provides for storing, accessing and manipulating collections of data. 
+#In particular, we have seen lists, sets, and dictionaries.
+#list are sortable, you can add an item to a list with .append and list items are always indexed with numbers starting at 0.
+
+#how to add is_noble_gas into the question to make is_noble_gas to helium be true while in hydrogen be false.
+elements = {'hydrogen': {'number': 1, 'weight': 1.00794, 'symbol': 'H'},
+            'helium': {'number': 2, 'weight': 4.002602, 'symbol': 'He'}}
+
+elements['hydrogen']['is_noble_gas'] = False
+elements['helium']['is_noble_gas'] = True
+
+#Random Questions
+#Find the number of unique words in the text.
+#1.Split verse into a list of words. Hint: You can use a string method.
+#2.Convert the list into a data structure that would keep only the unique elements from the list.
+#3.Print the length of the container.
+
+verse = "if you can keep your head when all about you are losing theirs and blaming it on you   if you can trust yourself when all men doubt you     but make allowance for their doubting too   if you can wait and not be tired by waiting      or being lied about  don’t deal in lies   or being hated  don’t give way to hating      and yet don’t look too good  nor talk too wise"
+print(verse, '\n')
+
+# split verse into list of words
+print(verse, '\n')
+verse_list = verse.split() #solution to split the verse. You use the split method. 
+print(verse_list, '\n')
+
+# convert list to a data structure that stores unique elements
+verse_set =set(verse_list) # solution to get unique elements.A set stores unique items. 
+print(verse_set, '\n')
+
+#print the number of unique words
+num_unique = len(verse_set) #The number in our case will be regarded as length
+print(num_unique, '\n')
+
+#How many unique words are in verse_dict?
+#Is the key "breathe" in verse_dict?
+#What is the first element in the list created when verse_dict is sorted by keys?
+#Hint: Use the appropriate dictionary method to get a list of its keys, and then sort that list. Use this list of keys to answer the next two questions as well.
+#Which key (word) has the highest value in verse_dict?
+verse_dict =  {'if': 3, 'you': 6, 'can': 3, 'keep': 1, 'your': 1, 'head': 1, 'when': 2, 'all': 2, 'about': 2, 'are': 1, 'losing': 1, 'theirs': 1, 'and': 3, 'blaming': 1, 'it': 1, 'on': 1, 'trust': 1, 'yourself': 1, 'men': 1, 'doubt': 1, 'but': 1, 'make': 1, 'allowance': 1, 'for': 1, 'their': 1, 'doubting': 1, 'too': 3, 'wait': 1, 'not': 1, 'be': 1, 'tired': 1, 'by': 1, 'waiting': 1, 'or': 2, 'being': 2, 'lied': 1, 'don\'t': 3, 'deal': 1, 'in': 1, 'lies': 1, 'hated': 1, 'give': 1, 'way': 1, 'to': 1, 'hating': 1, 'yet': 1, 'look': 1, 'good': 1, 'nor': 1, 'talk': 1, 'wise': 1}
+print(verse_dict, '\n')
+#find number of unique keys in the dictionary
+num_keys = len(verse_dict)
+print(num_keys)
+
+# find whether 'breathe' is a key in the dictionary
+contains_breathe = "breathe" in verse_dict
+print(contains_breathe)
+
+# create and sort a list of the dictionary's keys
+sorted_keys = sorted(verse_dict.keys())
+
+# get the first element in the sorted list of keys
+print(sorted_keys[0])
+
+# find the element with the highest value in the list of keys
+print(sorted_keys[1]) 
+
+#Control Flow
 
 
 
