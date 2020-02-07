@@ -474,7 +474,212 @@ print(sorted_keys[0])
 print(sorted_keys[1]) 
 
 #Control Flow
+#If statements
+#These are statements that runs or skips code based on whether a condition is true or false.
+#An if statement is always followed by a condition then a colon, the next statement starts after indentation. 
+# A good example is if phone_balance < 5: #This is the condition that is set
+    #phone_balance += 10 #if its true(condition) this executes. If the condition is false the block is skipped
+    #bank_balance -= 10 # as well as this.
 
+#conditional statements use comparison operators such as == or =!
+#if, elif, and else statements.
+# in our case we had to allow the user to input the season so that the if statements may execute.
 
+season = input("What season are we in ?")
+if season == 'spring':
+    print('plant the garden!')
+elif season == 'summer':
+    print('water the garden!')
+elif season == 'fall':
+    print('harvest the garden!')
+elif season == 'winter':
+    print('stay indoors!')
+else:
+    print('unrecognized season')
+
+#Example 
+
+number = 186
+if number % 2 == 0:
+    print("Number " + str(number) + " is even.")
+else:
+    print("Number " + str(number) + " is odd.")
+
+#Example 
+age = 43
+
+# Here are the age limits for bus fares
+free_up_to_age = 5
+child_up_to_age = 16
+senior_from_age = 60
+
+# These lines determine the bus fare prices
+concession_ticket = 2.65
+adult_ticket = 3.45
+
+# Here is the logic for bus fare prices
+if age <= free_up_to_age:
+    ticket_price = 0
+elif age <= child_up_to_age:
+    ticket_price = concession_ticket
+elif age >= senior_from_age:
+    ticket_price = concession_ticket
+else:
+    ticket_price = adult_ticket
+
+message = "Somebody who is {} years old will pay ${} to ride the bus.".format(age, ticket_price)
+print(message)
+
+#An if statement that lets the gamer know what they have won.
+# The prizes and range are 
+#Points	and Prize
+#1 - 50	wooden rabbit
+#51 - 150	no prize
+#151 - 180	wafer-thin mint
+#181 - 200	penguin
+
+points = 165
+
+# write your if statement here
+
+if points <= 50:
+    result = "Congratulations! You just won a wooden rabbit."
+elif points <= 150:
+    result = "Oh dear, no prize at this time." 
+elif points <= 180:
+    result = "Congratulations! you just won a wafer-thin mint."
+else:
+    result = "congratulations! you just won a penguin."
+    
+print(result)
+
+# An exercise on guessing the number.
+ #You decide you want to play a game where you are hiding 
+# a number from someone.  Store this number in a variable 
+# called 'answer'.  Another user provides a number called
+# 'guess'.  By comparing guess to answer, you inform the user
+# if their guess is too high or too low.
+# their guess compares to the answer.
+# '''
+answer = 500 #provide answer
+guess = 250#provide guess
+
+if guess < answer: #provide conditional
+    result = "Oops!  Your guess was too low."
+elif guess > answer: #provide conditional
+    result = "Oops!  Your guess was too high."
+elif guess == answer: #provide conditional
+    result = "Nice!  Your guess matched the answer!"
+
+print(result)
+
+#Question on tax purchase
+#Depending on where an individual is from we need to tax them appropriately. 
+#The states of CA, MN, and NY have taxes of 7.5%, 9.5%, and 8.9% respectively. 
+#Use this information to take the amount of a purchase and the corresponding state to assure that they are taxed by the right amount.
+state = "NY" #Either CA, MN, or NY
+purchase_amount = 500#amount of purchase
+
+if state == "CA":#provide conditional for checking state is CA
+    tax_amount = .075
+    total_cost = purchase_amount*(1+tax_amount)
+    result = "Since you're from {}, your total cost is {}.".format(state, total_cost)
+
+elif  state == "MN": #provide conditional for checking state is MN
+    tax_amount = .095
+    total_cost = purchase_amount*(1+tax_amount)
+    result = "Since you're from {}, your total cost is {}.".format(state, total_cost)
+
+elif state == "NY": #provide conditional for checking state is NY
+    tax_amount = .089
+    total_cost = purchase_amount*(1+tax_amount)
+    result = "Since you're from {}, your total cost is {}.".format(state, total_cost)
+
+print(result)
+
+#Complex Boolean expressions.
+#For example
+weight = 55
+height = 164
+if 18.5 <= weight / height**2 < 25:
+    print("BMI is considered 'normal'")
+
+##if is_raining and is_sunny:
+    #print("Is there a rainbow?")
+
+##if (not unsubscribed) and (location == "USA" or location == "CAN"):
+    #print("send email")
+#An example of giving prizes using points and rewards
+points = 174  # this input is constant
+
+# the default prize value is None
+prize = None
+
+# use points and prize indication
+if points <= 50:
+    prize = "a wooden rabbit!"
+elif 151<= points <=180:
+    prize= "a wafer-thin mint"
+elif points >= 181:
+    prize= "a penguin"
+     
+
+# use the truth value of prize to assign result to the correct prize
+if prize:
+    result = "Congratulations! You won a {}!".format(prize)
+    
+else:
+    result= "Oh dear no prize this time."
+
+print(result)
+ #Python uses two loops for loop and while loop.
+cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+for city in cities: # city is the iteration variable, and cities is the iterable being looped over.
+    print(city)
+print("Done!")   
+#Using the range() Function with for Loops
+#range() is a built-in function used to create an iterable sequence of numbers. 
+#You will frequently use range() with a for loop to repeat an action a certain number of times.
+#Any variable can be used to iterate through the numbers, 
+# but Python programmers conventionally use i
+#range(start=0, stop, step=1)
+#The range() function takes three integer arguments, the first and third of which are optional:
+#The 'start' argument is the first number of the sequence. If unspecified, 'start' defaults to 0.
+#The 'stop' argument is 1 more than the last number of the sequence. This argument must be specified.
+#The 'step' argument is the difference between each number in the sequence. If unspecified, 'step' defaults to 1.
+
+# Creating a new list
+cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+capitalized_cities = []
+
+for city in cities:
+    capitalized_cities.append(city.title())
+sentence = ["the", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+
+# Write a for loop to print out each word in the sentence list, one word per line
+for word in sentence:
+    print(word)
+#to find multiples of 5
+for i in range(5, 35, 5):
+    print(i)
+
+#how to replace names to lower case and use underscores instead of spaces between names.
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
+
+# write your for loop here
+for name in names:
+    usernames.append(name.lower().replace(" ", "_"))
+print(usernames)
+#writing names using range
+usernames = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+# write your for loop here
+for i in range(len(usernames)):
+    usernames[i] = usernames[i].lower().replace(" ", "_")
+print(usernames)
+
+   
+  
 
 
